@@ -1,6 +1,7 @@
 import os
 import re
 
+
 def regroup_filename(input_dir):
     regrouped_filename={}  
     list_of_files=os.listdir(input_dir)
@@ -20,7 +21,6 @@ def regroup_filename(input_dir):
     return regrouped_filename
 
 if __name__ == "__main__":
-    input_dir='/home/baller/work/intertext_merge_xml/test/data/t001-input'
-    regrouped_filenames=regroup_filename(input_dir)
-    print(regrouped_filenames)
-
+    input_dir = '/home/baller/work/intertext-files-merger/tests/data/t001-input'
+    regrouped_filename = regroup_filename(input_dir)
+    print(regrouped_filename)
