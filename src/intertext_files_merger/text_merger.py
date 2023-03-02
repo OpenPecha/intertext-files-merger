@@ -1,6 +1,7 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
 from intertext_files_merger.filename_regrouper import regroup_filename
+from intertext_files_merger.alignment_merger import merge_alignment_file
 
 def merge_text(soup, last_p_id):  
     cur_paras = soup.find_all("p")
@@ -30,34 +31,45 @@ def get_language_text(file_paths):
         merge_text(soup,last_p_id)
         create_xml(soup,root)
         last_p_id += int(cur_file_last_pid)  
-        return new_xml.prettify()
+    return new_xml.prettify()
 
 def create_xml(soup,root): 
     p_tags=soup.find_all('p')
     for p_tag in p_tags:
         root.append(p_tag)    
     
-def merged_filename(data):
-    languages=['bo','cn']
-    merged_xmls=[]
-    for language in languages:
-        if language in languages:
-            merged_xml=get_language_text(data[language])
-            merged_xmls.append(merged_xml)
-        else:
-            print(f"Data for {language} language not found.")
+def merge_xml(language_filepaths):
+    #merged_xml=get_language_text(regrouped_filename[language])
+    merged_xmls=get_language_text(language_filepaths)
     return merged_xmls
+
+def is_alignment_file(language):
+    if "." in language:
+        return True
+    return False
 
 
 def merge_texts(regrouped_filenames): 
-    merged_xmls={}
-    for file_path,filename_dict in regrouped_filenames.items():
-        merged_xml=merged_filename(filename_dict)
-        merged_xmls.update({file_path:merged_xml})
-    return merged_xmls
-    
+    merged_text_id={}
+
+    for text_id,regrouped_filename in regrouped_filenames.items():
+        merged_xmls = {}
+        for language,language_filepaths in regrouped_filename.items():
+            if is_alignment_file(language):
+                merged_xmls[language]=merge_alignment_file(language_filepaths)
+            else:
+                merged_xmls[language]=merge_xml(language_filepaths)
+            merged_text_id.update({text_id:merged_xmls})
+    return merged_text_id
+
 
 if __name__ =="__main__":
    input_dir=Path('./tests/data/t001-input')
    regrouped_filenames=regroup_filename(input_dir)
-   merge_texts(regrouped_filenames)
+   merged_texts=merge_texts(regrouped_filenames)
+   output_directory = Path("./tests/data/t001/")
+   for text_id,language_files in merged_texts.items():
+        for lang,lang_text in language_files.items():
+           file_name= text_id+"-"+lang+".xml"           
+           file_path = output_directory/file_name
+           file_path.write_text(lang_text,encoding="utf-8")        
