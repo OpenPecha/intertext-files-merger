@@ -16,8 +16,8 @@ def test_regroup_filename():
             Path("./tests/data/t001-input/t001-03-jc.cn.xml")
             ],
             'bo.cn': [
-            Path("./tests/data/t001-input/t001-03-jc.bo.cn.xml"),
             Path("./tests/data/t001-input/t001-01-padma.bo.cn.xml"),
+            Path("./tests/data/t001-input/t001-03-jc.bo.cn.xml"),
             ]
         }   
     }
