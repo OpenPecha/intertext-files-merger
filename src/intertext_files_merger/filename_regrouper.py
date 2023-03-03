@@ -1,13 +1,14 @@
-import os
 import re
+from pathlib import Path
 
 
 def regroup_filename(input_dir):
     regrouped_filename={}  
-    list_of_files=os.listdir(input_dir)
+    list_of_files=list(input_dir.iterdir())
 
-    for file_name in list_of_files:
-        extr=re.match(r"^([^-]*)[^\.]*\.(.*)(\.xml)$",file_name)
+    for file_path in list_of_files:
+        file_name = file_path.stem
+        extr=re.match(r"^([^-]*)[^\.]*\.(.*)$",file_name)
         main_file=extr.group(1)
         lang=extr.group(2)
 
@@ -16,11 +17,11 @@ def regroup_filename(input_dir):
 
         if lang not in regrouped_filename[main_file].keys():
             regrouped_filename[main_file][lang]=[]
-        regrouped_filename[main_file][lang].append(file_name)
+        regrouped_filename[main_file][lang].append(file_path)
 
     return regrouped_filename
 
 if __name__ == "__main__":
-    input_dir = '/home/baller/work/intertext-files-merger/tests/data/t001-input'
+    input_dir = Path('./tests/data/t001-input')
     regrouped_filename = regroup_filename(input_dir)
     print(regrouped_filename)

@@ -1,26 +1,11 @@
 from pathlib import Path
 
-expected_output= Path('./tests/data/t001-output/t001.bo.xml').read_text(encoding="utf-8")
+from intertext_files_merger.text_merger import get_language_text
+
 
 def test_merge_text():
-    pass
-#     files=[]
-#     for sublists in regrouped_filenames['t001']['bo']: 
-#         files.append(sublists)
-    
-#     srcs=files[0]
-#     dest=files[1]
-
-#     with open(home/baller/work/intertext-files-merger/tests/data/t001-input/srcs,'r') as f:
-#         data = f.read() 
-
-#     soup_prev = BeautifulSoup(data,"xml")
-#     soup_cur = BeautifulSoup(cur_xml,"xml")
-#     print(soup_prev)
-      
-#     assert merged_test == expected_output
-
-
-if __name__ == "__main__":
-    
-    test_merge_text()
+    expected_output=Path('./tests/data/t001-output/t001.bo.xml').read_text(encoding="utf-8")
+    file_paths=['./tests/data/t001-input/t001-01-padma.bo.xml','./tests/data/t001-input/t001-03-jc.bo.xml']
+    merged_text=get_language_text(file_paths)
+    #Path('./tests/merged_text.xml').write_text(merged_text,encoding='utf-8')
+    assert merged_text == expected_output
