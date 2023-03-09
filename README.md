@@ -12,7 +12,7 @@
 
 ## Owner(s)
 
-- [@10zinten](https://github.com/10zinten)
+- [@Chime](https://github.com/10zinten)
 
 ## RFXs
 
