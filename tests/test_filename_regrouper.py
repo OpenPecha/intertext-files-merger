@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 from intertext_files_merger.filename_regrouper import regroup_filename
 
@@ -17,7 +16,7 @@ def test_regroup_filename():
             ],
             'bo.cn': [
             Path("./tests/data/t001-input/t001-01-padma.bo.cn.xml"),
-            Path("./tests/data/t001-input/t001-03-jc.bo.cn.xml"),
+            Path("./tests/data/t001-input/t001-03-jc.bo.cn.xml")
             ]
         }   
     }
