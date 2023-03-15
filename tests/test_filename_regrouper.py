@@ -7,8 +7,8 @@ def test_regroup_filename():
     expected_output = {
         "t001":{
             'bo': [
-            Path("./tests/data/t001-input/t001-03-jc.bo.xml"),
-            Path("./tests/data/t001-input/t001-01-padma.bo.xml")
+            Path("./tests/data/t001-input/t001-01-padma.bo.xml"),
+            Path("./tests/data/t001-input/t001-03-jc.bo.xml")
             ],
             'cn': [
             Path("./tests/data/t001-input/t001-01-padma.cn.xml"),
