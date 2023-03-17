@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 input_directory = "./tests/data/t001-input"
-output_dir = "./tests/data/t001-output"
+output_dir = "./tests/data/t001_output"
 
 def save_text(input_dir):
     list_of_files=list(input_dir.iterdir())

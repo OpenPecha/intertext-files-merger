@@ -39,7 +39,6 @@ def create_xml(soup,root):
         root.append(p_tag)    
     
 def merge_xml(language_filepaths):
-    #merged_xml=get_language_text(regrouped_filename[language])
     merged_xmls=get_language_text(language_filepaths)
     return merged_xmls
 
@@ -67,9 +66,9 @@ if __name__ =="__main__":
    input_dir=Path('./tests/data/t001-input')
    regrouped_filenames=regroup_filename(input_dir)
    merged_texts=merge_texts(regrouped_filenames)
-   output_directory = Path("./tests/data/t001/")
+   output_directory = Path("./tests/data/t001_output/")
    for text_id,language_files in merged_texts.items():
         for lang,lang_text in language_files.items():
-           file_name= text_id+"-"+lang+".xml"           
+           file_name= text_id+"."+lang+".xml"           
            file_path = output_directory/file_name
            file_path.write_text(lang_text,encoding="utf-8")        

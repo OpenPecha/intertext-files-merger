@@ -6,7 +6,6 @@ def merge_text(soup,last_xtarget):
         xtargets = cur_link["xtargets"].split(";")
         new_xtargets = []
         
-        #for xtarget in xtargets:
         if xtargets[0]!="":
             part1_xtarget= xtargets[0].split(":")
             part1_xtarget[0] = str(int(part1_xtarget[0]) + last_xtarget[0])
@@ -62,6 +61,3 @@ def update_last_target(last_xtarget,l_xtarget):
 def merge_alignment_file(alignment_filepaths):
     merged_xmls=get_alignment_text(alignment_filepaths)
     return merged_xmls
-
-
-    
