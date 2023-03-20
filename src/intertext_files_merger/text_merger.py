@@ -47,7 +47,6 @@ def is_alignment_file(language):
         return True
     return False
 
-
 def merge_texts(regrouped_filenames): 
     merged_text_id={}
 

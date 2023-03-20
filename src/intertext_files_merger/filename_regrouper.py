@@ -5,6 +5,7 @@ from pathlib import Path
 def regroup_filename(input_dir):
     regrouped_filename={}  
     list_of_files=list(input_dir.iterdir())
+    list_of_files.sort()
 
     for file_path in list_of_files:
         file_name = file_path.stem

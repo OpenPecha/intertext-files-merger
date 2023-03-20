@@ -8,6 +8,7 @@ output_dir = "./tests/data/t001_output"
 
 def save_text(input_dir):
     list_of_files=list(input_dir.iterdir())
+    list_of_files.sort()
     for file_path in list_of_files:
         file_name = file_path.stem
         extr=re.match(r"^([^-]*)[^\.]*\.(.*)$",file_name)
