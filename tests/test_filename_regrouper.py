@@ -21,7 +21,6 @@ def test_regroup_filename():
         }   
     }
     
-
     regrouped_filename = regroup_filename(input_dir)
     assert regrouped_filename == expected_output
 
