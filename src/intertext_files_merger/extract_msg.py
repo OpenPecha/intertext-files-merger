@@ -9,8 +9,8 @@ def get_file_names(commit_msg):
         print("Trigger word 'merge' not found in commit message.")
 
 if __name__=="__main__":
-    #commit_msg = sys.argv[1]
-    commit_msg= "Merge[t001-01-padma.bo.cn.xml, t001-03-jc.bo.cn.xml] into [dmk-t341-t0202.bo.cn.xml]"
+    commit_msg = sys.argv[1]
+    #commit_msg= "Merge[t001-01-padma.bo.cn.xml, t001-03-jc.bo.cn.xml] into [dmk-t341-t0202.bo.cn.xml]"
     input_filenames=get_file_names(commit_msg)
     print(input_filenames)
 
