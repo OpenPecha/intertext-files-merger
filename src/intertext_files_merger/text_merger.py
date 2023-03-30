@@ -1,7 +1,4 @@
-from pathlib import Path
 from bs4 import BeautifulSoup
-from intertext_files_merger.extract_msg import get_file_names,commit_msg
-from intertext_files_merger.filename_regrouper import regroup_filename
 from intertext_files_merger.alignment_merger import merge_alignment_file
 
 def merge_text(soup, last_p_id):  
@@ -62,14 +59,3 @@ def merge_texts(regrouped_filenames):
     return merged_text_id
 
 
-if __name__ =="__main__":
-   #input_filenames=["t001-01-padma.bo.cn.xml","t001-03-jc.bo.cn.xml"]
-   input_filenames=get_file_names(commit_msg)
-   regrouped_filenames=regroup_filename(input_filenames)
-   merged_texts=merge_texts(regrouped_filenames)
-   output_directory = Path("./tests/data/t001_output/")
-   for text_id,language_files in merged_texts.items():
-        for lang,lang_text in language_files.items():
-           file_name= text_id+"."+lang+".xml"           
-           file_path = output_directory/file_name
-           file_path.write_text(lang_text,encoding="utf-8")        

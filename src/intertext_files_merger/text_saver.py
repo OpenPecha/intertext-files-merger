@@ -1,7 +1,7 @@
 import re
 import os
 import shutil
-from intertext_files_merger.extract_msg import get_file_names,commit_msg
+
 
 input_directory = "./tests/data/t001-input"
 output_dir = "./tests/data/t001_output"
@@ -30,7 +30,3 @@ def save_text(input_filenames):
             shutil.copyfile(input_file_path, output_file_path)
             #print(f'Copied file {filename} to {split_text_id_dir}')
 
-if __name__ == "__main__":
-    #input_filenames=["t001-01-padma.bo.cn.xml","t001-03-jc.bo.cn.xml"]
-    input_filenames=get_file_names(commit_msg)
-    save_text(input_filenames)

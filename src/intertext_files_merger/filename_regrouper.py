@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from intertext_files_merger.extract_msg import get_file_names,commit_msg
+
 
 input_dir = Path('./tests/data/t001-input')
 
@@ -31,10 +31,5 @@ def regroup_filename(input_filenames):
 
     return regrouped_filename
 
-if __name__ == "__main__":
-    #input_filenames=get_file_names(commit_msg)
-    input_filenames=["t001-01-padma.bo.cn.xml","t001-03-jc.bo.cn.xml"]
-    regrouped_filename = regroup_filename(input_filenames)
-    print(regrouped_filename)
 
     
