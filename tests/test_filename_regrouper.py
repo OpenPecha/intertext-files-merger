@@ -20,7 +20,7 @@ def test_regroup_filename():
         }   
     }
     
-    file_name="t001-01-padma.bo.cn.xml, t001-03-jc.bo.cn.xml"
+    file_name=["t001-01-padma.bo.cn.xml", "t001-03-jc.bo.cn.xml"]
     regrouped_filename = regroup_filename(file_name)
     assert regrouped_filename == expected_output
 
