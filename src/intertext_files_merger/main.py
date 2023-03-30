@@ -1,4 +1,5 @@
 from pathlib import Path
+from intertext_files_merger.extract_msg import get_file_names
 from intertext_files_merger.filename_regrouper import regroup_filename
 from intertext_files_merger.text_merger import merge_texts,is_alignment_file,merge_xml
 from intertext_files_merger.alignment_merger import merge_alignment_file,get_alignment_text
@@ -21,11 +22,13 @@ def merge_alignment_file(alignment_filepaths):
     merged_xmls=get_alignment_text(alignment_filepaths)
     return merged_xmls
 
+
 if __name__ == "__main__":
-    input_dir = Path('./tests/data/t001-input')
     input_directory = "./tests/data/t001-input"
     output_dir = "./tests/data/t001_output"
-    regrouped_filenames = regroup_filename(input_dir)
+    commit_msg= "Merge[t001-01-padma.bo.cn.xml, t001-03-jc.bo.cn.xml] into [dmk-t341-t0202.bo.cn.xml]"
+    input_filenames=get_file_names(commit_msg)
+    regrouped_filenames = regroup_filename(input_filenames)
     merged_texts=merge_texts(regrouped_filenames)
     output_directory = Path("./tests/data/t001_output/")
     for text_id,language_files in merged_texts.items():
@@ -33,5 +36,5 @@ if __name__ == "__main__":
            file_name= text_id+"."+lang+".xml"           
            file_path = output_directory/file_name
            file_path.write_text(lang_text,encoding="utf-8")
-    save_text(input_dir)
+    save_text(input_filenames)
     

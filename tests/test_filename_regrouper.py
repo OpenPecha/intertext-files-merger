@@ -3,7 +3,6 @@ from intertext_files_merger.filename_regrouper import regroup_filename
 
 
 def test_regroup_filename():
-    input_dir = Path('./tests/data/t001-input')
     expected_output = {
         "t001":{
             'bo': [
@@ -21,7 +20,8 @@ def test_regroup_filename():
         }   
     }
     
-    regrouped_filename = regroup_filename(input_dir)
+    file_name=["t001-01-padma.bo.cn.xml", "t001-03-jc.bo.cn.xml"]
+    regrouped_filename = regroup_filename(file_name)
     assert regrouped_filename == expected_output
 
 if __name__ == "__main__":
