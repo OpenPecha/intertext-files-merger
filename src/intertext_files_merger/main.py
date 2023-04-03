@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from intertext_files_merger.extract_msg import get_file_names
 from intertext_files_merger.filename_regrouper import regroup_filename
@@ -23,6 +24,7 @@ def merge_alignment_file(alignment_filepaths):
     return merged_xmls
 
 def main(commit_msg):
+    print(os.getcwd())
     input_filenames=get_file_names(commit_msg)
     regrouped_filenames = regroup_filename(input_filenames)
     merged_texts=merge_texts(regrouped_filenames)
@@ -33,3 +35,4 @@ def main(commit_msg):
            file_path = output_directory/file_name
            file_path.write_text(lang_text,encoding="utf-8")
     save_text(input_filenames)
+    
