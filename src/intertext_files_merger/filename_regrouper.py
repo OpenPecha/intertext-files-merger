@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 
-input_dir = Path('./tests/data/t001-input')
+input_dir = Path('./data/input')
 
 def regroup_filename(input_filenames):  
     regrouped_filename={} 

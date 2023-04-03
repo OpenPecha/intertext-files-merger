@@ -1,5 +1,4 @@
 import re
-import sys
 
 def get_file_names(commit_msg):
     if "merge" in commit_msg.lower():
