@@ -3,13 +3,13 @@ import os
 import shutil
 
 
-input_directory = "./tests/data/t001-input"
-output_dir = "./tests/data/t001_output"
+input_directory = "./data/input"
+output_dir = ".data/output"
 
 def save_text(input_filenames):
     list_of_filenames=[]
     for file_name in input_filenames:
-        extr=re.match(r"^([^-]*)([^\.]*)\.(.*)(\.xml)$",file_name)
+        extr=re.match(r"^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)(\.xml)$",file_name)
         main_file=extr.group(1)
         body=extr.group(2)
         langs=extr.group(3)
@@ -29,4 +29,3 @@ def save_text(input_filenames):
                 os.makedirs(split_text_id_dir)
             shutil.copyfile(input_file_path, output_file_path)
             #print(f'Copied file {filename} to {split_text_id_dir}')
-
