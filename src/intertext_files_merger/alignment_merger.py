@@ -23,7 +23,8 @@ def merge_text(soup,last_xtarget):
         cur_link["status"]= cur_link["status"]       
 
 def get_alignment_text(file_paths):
-    file_name=file_paths.stem()
+    file_path=file_paths[0]
+    file_name=file_path.stem
     extr=re.match("^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)$",file_name)
     main_file=extr.group(1)
     langs=extr.group(3)
