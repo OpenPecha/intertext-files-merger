@@ -29,7 +29,3 @@ def save_text(input_filenames):
                 os.makedirs(split_text_id_dir)
             shutil.copyfile(input_file_path, output_file_path)
             #print(f'Copied file {filename} to {split_text_id_dir}')
-
-if __name__=="__main__":
-    input=["dmk-t341-t0202-01-padma-20221217.bo.cn.xml","dmk-t341-t0202-03-JC-20221217.bo.cn.xml"]
-    save_text(input)

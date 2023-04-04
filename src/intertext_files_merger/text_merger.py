@@ -57,5 +57,3 @@ def merge_texts(regrouped_filenames):
                 merged_xmls[language]=merge_xml(language_filepaths)
             merged_text_id.update({text_id:merged_xmls})
     return merged_text_id
-
-

@@ -1,3 +1,4 @@
+import re
 from bs4 import BeautifulSoup
 
 def merge_text(soup,last_xtarget):
@@ -22,10 +23,20 @@ def merge_text(soup,last_xtarget):
         cur_link["status"]= cur_link["status"]       
 
 def get_alignment_text(file_paths):
+    file_path=file_paths[0]
+    file_name=file_path.stem
+    extr=re.match("^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)$",file_name)
+    main_file=extr.group(1)
+    langs=extr.group(3)
+    sep_langs=langs.split(".")
+    lang_1=sep_langs[0]
+    lang_2=sep_langs[1]
+    root_toDoc=f"{main_file}.{lang_2}.xml"
+    root_fromDoc=f"{main_file}.{lang_1}.xml"
     new_xml = BeautifulSoup(features='xml')
     root = new_xml.new_tag('linkGrp')
-    root['toDoc']='t001.cn.xml'
-    root['fromDoc']='t001.bo.xml'
+    root['toDoc']=root_toDoc
+    root['fromDoc']=root_fromDoc
     new_xml.append(root)
     last_xtarget=[0,0]
     for file_path in file_paths:
