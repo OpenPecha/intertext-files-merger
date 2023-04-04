@@ -55,7 +55,10 @@ def create_xml(soup,root):
 
 def update_last_target(last_xtarget,l_xtarget):
     for i in range(len(last_xtarget)):
-        last_xtarget[i] += int(l_xtarget[i])
+        if l_xtarget[i]:
+            last_xtarget[i] += int(l_xtarget[i])
+        else:
+            last_xtarget[i] += int(l_xtarget[i+1])
     return last_xtarget
 
 def merge_alignment_file(alignment_filepaths):
