@@ -8,18 +8,21 @@ def regroup_filename(input_dir):
     list_of_files.sort()
 
     for file_path in list_of_files:
-        file_name = file_path.stem
-        extr=re.match(r"^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)$",file_name)
-        main_file=extr.group(1)
-        body = extr.group(2)
-        lang=extr.group(3)
+        try:
+            file_name = file_path.stem
+            extr=re.match(r"^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)$",file_name)
+            main_file=extr.group(1)
+            body = extr.group(2)
+            lang=extr.group(3)
 
-        if main_file not in regrouped_filename.keys():
-            regrouped_filename[main_file]={}
+            if main_file not in regrouped_filename.keys():
+                regrouped_filename[main_file]={}
 
-        if lang not in regrouped_filename[main_file].keys():
-            regrouped_filename[main_file][lang]=[]
-        regrouped_filename[main_file][lang].append(file_path)
+            if lang not in regrouped_filename[main_file].keys():
+                regrouped_filename[main_file][lang]=[]
+            regrouped_filename[main_file][lang].append(file_path)
+        except:
+            print(f'INFO: {file_name} File naming convention not found')
 
     return regrouped_filename
 
