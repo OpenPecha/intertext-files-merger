@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from bs4 import BeautifulSoup
 
 def merge_text(soup,last_xtarget):
@@ -44,29 +45,42 @@ def get_alignment_text(file_paths):
             xml = f.read()
             soup = BeautifulSoup(xml, 'xml')
         l_xtarget=get_last_xtarget(soup)
+        second_l_xtarget=second_lxtarget(soup)
         merge_text(soup,last_xtarget)
         create_xml(soup,root)
-        update_last_target(last_xtarget,l_xtarget)
-
+        update_last_target(last_xtarget,l_xtarget,second_l_xtarget)
     return new_xml.prettify()
 
 def get_last_xtarget(soup):
     cur_file_last_xtarget=soup.find_all('link')[-1]
     xtargets = cur_file_last_xtarget["xtargets"].split(";")
-    last_xtarget=[]
+    last_x_target=[]
     for xtarget in xtargets:
         parts = xtarget.split(":")
-        last_xtarget.append(parts[0])
-    return last_xtarget
+        last_x_target.append(parts[0])
+    return last_x_target
+
+def second_lxtarget(soup):
+    second_last_xtarget=soup.find_all('link')[-2]
+    xtargets = second_last_xtarget["xtargets"].split(";")
+    second_last_x_target=[]
+    for xtarget in xtargets:
+        parts = xtarget.split(":")
+        second_last_x_target.append(parts[0])
+    return second_last_x_target
 
 def create_xml(soup,root):
     link_tags=soup.find_all('link')
     for link_tag in link_tags:
         root.append(link_tag)
 
-def update_last_target(last_xtarget,l_xtarget):
+def update_last_target(last_xtarget,l_xtarget,second_l_xtarget):
     for i in range(len(last_xtarget)):
-        last_xtarget[i] += int(l_xtarget[i])
+        if l_xtarget[i] != '':
+            last_xtarget[i] += int(l_xtarget[i])
+        else:
+            last_xtarget[i]+= int(second_l_xtarget[i])
+
     return last_xtarget
 
 def merge_alignment_file(alignment_filepaths):
