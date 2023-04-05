@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<linkGrp fromDoc="t001.bo.xml" toDoc="t001.cn.xml">
+<linkGrp fromDoc="dmk-t341-t0202.bo.xml" toDoc="dmk-t341-t0202.cn.xml">
  <link status="man" type="1-1" xtargets="1:1;1:1"/>
  <link status="man" type="1-1" xtargets="1:2;2:1"/>
  <link status="man" type="1-1" xtargets="1:3;3:1"/>
