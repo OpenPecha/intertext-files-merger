@@ -29,7 +29,7 @@ def get_language_text(file_paths):
         merge_text(soup,last_p_id)
         create_xml(soup,root)
         last_p_id += int(cur_file_last_pid)  
-    return new_xml.prettify()
+    return new_xml
 
 def create_xml(soup,root): 
     p_tags=soup.find_all('p')
