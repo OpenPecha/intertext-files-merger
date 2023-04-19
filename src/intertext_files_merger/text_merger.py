@@ -1,3 +1,4 @@
+from pathlib import Path
 from bs4 import BeautifulSoup
 from intertext_files_merger.alignment_merger import merge_alignment_file
 
@@ -28,8 +29,9 @@ def get_language_text(file_paths):
         cur_file_last_pid=soup.find_all('p')[-1]['id']
         merge_text(soup,last_p_id)
         create_xml(soup,root)
-        last_p_id += int(cur_file_last_pid)  
-    return new_xml.prettify()
+        last_p_id += int(cur_file_last_pid)
+    str_xml=str(new_xml)
+    return str_xml
 
 def create_xml(soup,root): 
     p_tags=soup.find_all('p')
