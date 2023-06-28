@@ -1,5 +1,4 @@
 import re
-from pathlib import Path
 from bs4 import BeautifulSoup
 
 def merge_text(soup,last_xtarget):
@@ -74,17 +73,6 @@ def second_lxtarget(soup):
                 return second_last_x_target
             else:
                 break
-
-    
-        
-    #second_last_xtarget=soup.find_all('link')[-2]
-    #xtargets = second_last_xtarget["xtargets"].split(";")
-    #second_last_x_target=[]
-    #for xtarget in xtargets:
-     #   parts = xtarget.split(":")
-      #  second_last_x_target.append(parts[0])
-    #return second_last_x_target
-
 
 def create_xml(soup,root):
     link_tags=soup.find_all('link')
