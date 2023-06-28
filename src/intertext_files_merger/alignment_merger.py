@@ -61,13 +61,30 @@ def get_last_xtarget(soup):
     return last_x_target
 
 def second_lxtarget(soup):
-    second_last_xtarget=soup.find_all('link')[-2]
-    xtargets = second_last_xtarget["xtargets"].split(";")
-    second_last_x_target=[]
-    for xtarget in xtargets:
-        parts = xtarget.split(":")
-        second_last_x_target.append(parts[0])
-    return second_last_x_target
+    link_elements = soup.find_all('link')
+    for link in reversed(link_elements):
+        xtargets = link.get("xtargets")
+        second_last_x_target = []
+        parts = xtargets.split(";")
+        for i in range(len(parts) - 1):
+            current_target = parts[i].split(":")
+            next_target = parts[i + 1].split(":")
+            if current_target[0] and next_target[0]:
+                second_last_x_target.extend([current_target[0], next_target[0]])
+                return second_last_x_target
+            else:
+                break
+
+    
+        
+    #second_last_xtarget=soup.find_all('link')[-2]
+    #xtargets = second_last_xtarget["xtargets"].split(";")
+    #second_last_x_target=[]
+    #for xtarget in xtargets:
+     #   parts = xtarget.split(":")
+      #  second_last_x_target.append(parts[0])
+    #return second_last_x_target
+
 
 def create_xml(soup,root):
     link_tags=soup.find_all('link')
