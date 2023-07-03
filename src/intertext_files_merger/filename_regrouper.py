@@ -8,7 +8,7 @@ def regroup_filename(input_filenames):
     regrouped_filename={} 
 
     for file_name in input_filenames:
-        extr=re.match("^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)(\.xml)$",file_name)
+        extr=re.match("^(\w+-\w+-\w+)(-\w+-\w+-\w+)\.(.*)(\.xml)$",file_name)
         main_file=extr.group(1)
         body=extr.group(2)
         langs=extr.group(3)
