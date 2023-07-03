@@ -33,4 +33,3 @@ def regroup_filename(input_filenames):
             print(f'INFO: {file_name} file naming convention not found')
 
     return regrouped_filename
-
