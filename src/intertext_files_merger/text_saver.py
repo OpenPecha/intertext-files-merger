@@ -9,7 +9,7 @@ output_dir = "./data/output"
 def save_text(input_filenames):
     list_of_filenames=[]
     for file_name in input_filenames:
-        extr=re.match(r"^(\w+-\w+-\w+)(-\d+-\w+-\d+)\.(.*)(\.xml)$",file_name)
+        extr=re.match(r"^(\w+-\w+-\w+)(-\w+-\w+-\w+)\.(.*)(\.xml)$",file_name)
         main_file=extr.group(1)
         body=extr.group(2)
         langs=extr.group(3)
